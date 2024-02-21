@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box_stories {
+            max-width: 1200px;
+            width: 100%;
+            margin-inline: 350px;
+            padding: 20px 0px;
+            display: flex;
+            gap: 17px;
+        }
+
+        .user {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user img {
+            width: 80px;
+            height: 76px;
+            border-radius: 70%;
+            border: 3px solid #fc466b;
+        }
+
+        .flex_box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .header {
+            max-width: 500px;
+            position: fixed;
+            width: 18%;
+            top: 0;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .search-bar {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px 8px;
+            width: 180px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            padding: 10px;
+        }
+
+        .menu-item {
+            color: #333;
+            cursor: pointer;
+            font-weight: 510;
+            font-size: 20px;
+            align-self: flex-start;
+        }
+
+        .menu-item:nth-child(n+4) {
+            margin-left: 0;
+            margin-right: 16px;
+        }
+
+        .content {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .post-header {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-header img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .post-header .username {
+            font-weight: bold;
+        }
+
+        .post-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .post-actions {
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-actions button {
+            margin-right: 8px;
+            padding: 0; /* remove padding */
+            border: none;
+            background: none; /* remove background */
+            cursor: pointer;
+        }
+
+        .post-actions button img {
+            width: 24px; /* adjust image size */
+            height: 24px; /* adjust image size */
+        }
+
+        .post-actions button:hover img {
+            opacity: 0.7; /* add opacity on hover */
+        }
+
+        .post-actions button:last-child {
+            margin-right: 0; /* remove right margin for the last button */
+        }
+
+        .post-stats {
+            padding: 8px;
+            font-size: 10px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-stats span {
+            margin-right: 16px;
+        }
+
+        .post-comments {
+            padding: 8px;
+        }
+
+        .post-comments .comment {
+            margin-bottom: 8px;
+        }
+
+        .post-comments .comment .username {
+            font-weight: bold;
+        }
+
+        .post-comments .comment .text {
+            margin-left: 4px;
+        }
+
+        .post-comment-form {
+            padding: 8px;
+            border-top: 1px solid #ddd;
+        }
+
+        .post-comment-form input[type="text"] {
+            width: calc(100% - 20px);
+            border: none;
+            padding: 8px;
+            outline: none;
+        }
+
+        .post-comment-form button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .post-comment-form button img {
+            width: 24px;
+            height: 24px;
+        }
+
+
+    </style>
+</head>
+<body  class="flex_box">
+<div class="box_stories">
+
+    <div class="user">
+        <img src="https://avatars.mds.yandex.net/i?id=c7435deb4c93a216381e80bd9158d01618a152a0-10733191-images-thumbs&n=13" alt="">
+        <p>user</p>
+    </div>
+    <div class="user">
+        <img src="https://avatars.mds.yandex.net/get-socsnippets/5281452/2a000001879978f41d1cdd7d4a46a4160f30/square_83" alt="">
+        <p>user</p>
+
+    </div>
+    <div class="user">
+        <img src="https://static-eu-cdn.eporner.com/gallery/nU/sl/IRjjq4nslnU/9159855-fhhj8adwiaasne.jpg" alt="">
+        <p>user</p>
+    </div>
+
+    <div class="user">
+        <img src="https://avatars.mds.yandex.net/i?id=075ab0744ee2366951e0de6d9cce31fdc849edd1-10328327-images-thumbs&n=13" alt="">
+        <p>
+            user
+        </p>
+    </div>
+
+    <div class="user">
+        <img src="https://avatars.mds.yandex.net/get-entity_search/95107/853734023/SUx182" alt="">
+        <p>
+            user
+        </p>
+    </div>
+
+
+
+</div>
+
+
+<div class="header">
+    <div>
+        <img src="https://i.pinimg.com/564x/d9/3a/db/d93adb1816eb64a808298982c7d6ad89.jpg" alt="instagram picture" style="max-width: 200px; height: auto;">
+    </div>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="https://i.pinimg.com/564x/bd/26/41/bd26412cf655fc142c288aed78dd2ebe.jpg" alt="add post" style="width: 30px; height: 30px;">
+            <span style="margin-top: 5px;">Home</span>
+        </div>
+        <div class="menu-item">Search</div>
+        <div class="menu-item">Profile</div>
+        <div class="menu-item">Add Post</div>
+        <div class="menu-item">More</div>
+    </div>
+
+</div>
+
+<div class="content">
+    <div class="post">
+        <div class="post-header">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLQSSPcvPngpHB7-9QOKdU_kbkhehGL-WBvmJOW8=s900-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
+            <div class="username">username</div>
+        </div>
+        <div class="post-image">
+            <img src="https://avatars.mds.yandex.net/i?id=73237d3e2cf7db31f163fa074f5fa1836e11d80d-12150810-images-thumbs&n=13" alt="Post Image">
+        </div>
+        <div class="post-stats">
+            <span class="likes">100 likes</span>
+            <span class="comments">10 comments</span>
+            <span class="bookmarks">5 saves</span>
+        </div>
+        <div class="post-actions">
+            <div>
+                <button class="like" onclick="toggleLike(this)"><img src="https://i.pinimg.com/564x/51/96/d3/5196d39b9511713b6ef466a0b7dcc4dd.jpg" alt="Like"></button>
+                <button class="comment" onclick="showCommentInput()"><img src="https://i.pinimg.com/564x/1d/32/2b/1d322b6f36b2f6342d6c5bb11afaa205.jpg" alt="Comment"></button>
+                <button class="bookmark" onclick="savePost()"><img src="https://i.pinimg.com/564x/e1/92/dd/e192dd9da493f6c0439a99c567a54abc.jpg" alt="Send"></button>
+            </div>
+            <div>
+                <button  onclick="addComment()"><img src="https://i.pinimg.com/474x/41/03/28/410328f240725b080fa9a29a4319690a.jpg" alt="Bookmark"></button>
+            </div>
+        </div>
+        <div class="post-comments">
+            <!-- Здесь будут комментарии -->
+        </div>
+        <div class="post-comment-form">
+            <label>
+                <input type="text" placeholder="Add a comment..." style="display: none;">
+            </label>
+            <button onclick="addComment()">publish</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleLike(button) {
+        button.classList.toggle('liked');
+    }
+
+    function showCommentInput() {
+        const commentInput = document.querySelector('.post-comment-form input[type="text"]');
+        commentInput.style.display = 'block';
+    }
+
+    function savePost() {
+
+    }
+
+    function addComment() {
+        const input = document.querySelector('.post-comment-form input[type="text"]');
+        const text = input.value.trim();
+        if (text !== '') {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            const usernameSpan = document.createElement('span');
+            usernameSpan.classList.add('username');
+            usernameSpan.textContent = 'username:';
+            const textSpan = document.createElement('span');
+            textSpan.classList.add('text');
+            textSpan.textContent = text;
+            commentDiv.appendChild(usernameSpan);
+            commentDiv.appendChild(textSpan);
+            const postCommentsDiv = document.querySelector('.post-comments');
+            postCommentsDiv.appendChild(commentDiv);
+            input.value = '';
+        }
+    }
+</script>
+</body>
+</html>
